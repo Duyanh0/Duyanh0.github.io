@@ -15,7 +15,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f9f9f9;
+            background: #f8f8f8;
         }
 
         /* Navigation */
@@ -29,7 +29,7 @@
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 20px;
             display: flex;
@@ -62,9 +62,8 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('images/IMG_1059.JPG') center/cover;
-            height: 600px;
+            min-height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/IMG_1059.JPG') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -73,238 +72,120 @@
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: clamp(2.5rem, 5vw, 4rem);
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
         }
 
         .hero-content p {
-            font-size: 1.3rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
         }
 
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 60px 20px;
-        }
-
-        h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
+        /* Section Header */
+        .section-header {
             text-align: center;
-            color: #1a1a1a;
+            margin: 4rem 0;
         }
 
-        /* Portfolio Grid */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            background: rgba(255,255,255,0.95);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            display: inline-block;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
-        .project-card {
-            background: white;
-            border-radius: 8px;
+        /* Collage Grid - Flex Layout */
+        .collage-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .collage-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .collage-item {
+            position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
             cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            background: #ddd;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-size: 0.9rem;
-        }
-
-        /* Image Carousel */
-        .image-carousel {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
             background: #000;
+            height: 400px;
+            flex-grow: 1;
+            min-width: 200px;
         }
 
-        .carousel-container {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
+        /* Bildformat-Verhältnisse */
+        .collage-item.portrait-2-3 {
+            aspect-ratio: 2/3;
         }
 
-        .carousel-item {
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #ddd;
+        .collage-item.portrait-4-5 {
+            aspect-ratio: 4/5;
         }
 
-        .carousel-item img {
+        .collage-item.landscape-16-9 {
+            aspect-ratio: 16/9;
+        }
+
+        .collage-item:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .collage-item img,
+        .collage-item video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.4s ease;
         }
 
-        .carousel-nav {
+        .collage-item:hover img,
+        .collage-item:hover video {
+            transform: scale(1.05);
+        }
+
+        /* Play Button für Videos */
+        .play-overlay {
             position: absolute;
             top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: background 0.3s;
-            z-index: 10;
-        }
-
-        .carousel-nav:hover {
-            background: rgba(0,0,0,0.8);
-        }
-
-        .carousel-prev {
-            left: 10px;
-        }
-
-        .carousel-next {
-            right: 10px;
-        }
-
-        .carousel-dots {
-            position: absolute;
-            bottom: 10px;
             left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            z-index: 10;
-        }
-
-        .carousel-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: background 0.3s;
-            border: none;
-        }
-
-        /* Play-Button für Videos */
-        .video-placeholder {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-
-        .video-placeholder img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;  /* zeigt das ganze Bild */
-            background: #000;
-        }
-
-        .play-button {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background: rgba(255,255,255,0.9);
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.95);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.8rem;
             transition: all 0.3s;
+            opacity: 0;
             z-index: 5;
         }
 
-.video-placeholder:hover .play-button {
-    background: white;
-    transform: scale(1.1);
-}
-
-
-        .carousel-dot.active {
-            background: rgba(255,255,255,1);
+        .collage-item.video-item:hover .play-overlay {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.1);
         }
 
-        .carousel-dot:hover {
-            background: rgba(255,255,255,0.8);
-        }
-
-        .project-info {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #1a1a1a;
-        }
-
-        .project-type {
-            color: #64d8ff;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 0.8rem;
-        }
-
-        .project-description {
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 1rem;
-        }
-
-        .project-link {
-            display: inline-block;
-            background: #1a1a1a;
-            color: white;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: background 0.3s;
-        }
-
-        .project-link:hover {
-            background: #64d8ff;
-            color: #1a1a1a;
-        }
-
-        /* About Section */
-        #about {
-            background: white;
+        /* About & Contact */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
         }
 
         .about-content {
@@ -315,7 +196,7 @@
         }
 
         .about-text h3 {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
             color: #1a1a1a;
         }
@@ -338,7 +219,6 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 0.5rem;
-            color: #1a1a1a;
             font-weight: 500;
         }
 
@@ -358,7 +238,7 @@
 
         .about-image {
             width: 100%;
-            border-radius: 8px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
@@ -367,7 +247,6 @@
             width: 100%;
             height: auto;
             display: block;
-            background: #ddd;
         }
 
         /* Contact Section */
@@ -391,7 +270,7 @@
         .contact-item {
             background: rgba(255,255,255,0.1);
             padding: 2rem;
-            border-radius: 8px;
+            border-radius: 12px;
             transition: background 0.3s;
         }
 
@@ -414,31 +293,6 @@
             color: #64d8ff;
         }
 
-        .social-links {
-            margin-top: 2rem;
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: #64d8ff;
-            color: #1a1a1a;
-            border-radius: 50%;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .social-links a:hover {
-            background: white;
-        }
-
         /* Footer */
         footer {
             background: #0d0d0d;
@@ -448,50 +302,85 @@
             font-size: 0.9rem;
         }
 
+        /* Modal für Videos */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.95);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            aspect-ratio: 16 / 9;
+        }
+
+        .modal-content video,
+        .modal-content iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .close-modal:hover {
+            color: #64d8ff;
+        }
+
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2rem;
+            .collage-grid {
+                flex-direction: column;
+                align-items: stretch;
             }
 
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.85rem;
+            .collage-item {
+                height: 300px;
+                min-width: 100%;
+            }
+
+            .collage-item.portrait-2-3,
+            .collage-item.portrait-4-5,
+            .collage-item.landscape-16-9 {
+                aspect-ratio: auto;
             }
 
             .about-content {
                 grid-template-columns: 1fr;
             }
 
-            h2 {
-                font-size: 1.8rem;
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.85rem;
             }
-        }
-
-        /* Kategorie Filter */
-        .filter-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 0.8rem 1.5rem;
-            background: #f0f0f0;
-            border: 2px solid transparent;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-
-        .filter-btn:hover,
-        .filter-btn.active {
-            background: #1a1a1a;
-            color: white;
-            border-color: #64d8ff;
         }
     </style>
 </head>
@@ -502,257 +391,136 @@
             <div class="logo">Duyanh Do</div>
             <ul class="nav-links">
                 <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#about">Über mich</a></li>
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <div class="hero-content">
-            <h1>Videoproduktion & Fotoproduktion</h1>
-            <p>Visuelle Geschichten erzählen</p>
+    <!-- Mini Hero Section mit Tagline -->
+    <section id="portfolio" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); padding: 3rem 2rem; text-align: center;">
+        <h1 style="font-size: clamp(1.8rem, 4vw, 2.5rem); color: white; margin-bottom: 0.5rem;">Videoproduktion & Fotoproduktion</h1>
+        <p style="color: #64d8ff; font-size: 1.1rem; margin-bottom: 2rem;">Visuelle Geschichten erzählen</p>
+    </section>
+
+    <!-- Portfolio Collage -->
+    <div class="collage-container">
+        <div class="collage-grid">
+            <!-- Foto 1 - Hochkant 4:5 -->
+            <div class="collage-item portrait-4-5">
+                <img src="images/DSC03633.JPG" alt="Portfolio 1">
+            </div>
+
+            <!-- Foto 2 - Querformat 16:9 -->
+            <div class="collage-item landscape-16-9">
+                <img src="images/DSC03648.JPG" alt="Portfolio 2">
+            </div>
+
+            <!-- Foto 3 - Hochkant 2:3 -->
+            <div class="collage-item portrait-2-3">
+                <img src="images/DSC03155.JPG" alt="Portfolio 3">
+            </div>
+
+            <!-- Foto 4 - Hochkant 4:5 -->
+            <div class="collage-item portrait-4-5">
+                <img src="images/DSC03059.JPG" alt="Portfolio 4">
+            </div>
+
+            <!-- Foto 5 - Querformat 16:9 -->
+            <div class="collage-item landscape-16-9">
+                <img src="images/IMG_1059.JPG" alt="Portfolio 5">
+            </div>
+
+            <!-- Foto 6 - Hochkant 2:3 -->
+            <div class="collage-item portrait-2-3">
+                <img src="images/DSC04126.JPG" alt="Portfolio 6">
+            </div>
+
+            <!-- Foto 7 - Hochkant 4:5 -->
+            <div class="collage-item portrait-4-5">
+                <img src="images/DSC04668.JPG" alt="Portfolio 7">
+            </div>
+
+            <!-- Foto 8 - Hochkant 2:3 -->
+            <div class="collage-item portrait-2-3">
+                <img src="images/DSC04852.JPG" alt="Portfolio 8">
+            </div>
+
+            <!-- Video 16:9 mit Play-Button -->
+            <div class="collage-item landscape-16-9 video-item">
+                <video onclick="openModal(this)">
+                    <source src="images/visual_experience_vn_full_res.mov" type="video/quicktime">
+                </video>
+                <div class="play-overlay">▶</div>
+            </div>
+
+            <!-- Foto 9 - Hochkant 4:5 -->
+            <div class="collage-item portrait-4-5">
+                <img src="images/DSC03316.JPG" alt="Portfolio 9">
+            </div>
+
+            <!-- Foto 10 - Hochkant 2:3 -->
+            <div class="collage-item portrait-2-3">
+                <img src="images/DSC05823.JPG" alt="Portfolio 10">
+            </div>
+
+            <!-- Foto 11 - Hochkant 4:5 -->
+            <div class="collage-item portrait-4-5">
+                <img src="images/IMG_8512.jpg" alt="Portfolio 11">
+            </div>
+
+            <!-- Foto 12 - Querformat 16:9 -->
+            <div class="collage-item landscape-16-9">
+                <img src="images/DSC03136.JPG" alt="Portfolio 12">
+            </div>
+
+            <!-- Foto 13 - Hochkant 2:3 -->
+            <div class="collage-item portrait-2-3">
+                <img src="images/IMG_1056.JPG" alt="Portfolio 13">
+            </div>
+
+            <!-- Foto 14 - Hochkant 4:5 -->
+            <div class="collage-item portrait-4-5">
+                <img src="images/DSC03553.JPG" alt="Portfolio 14">
+            </div>
+
+            <!-- Foto 15 - Querformat 16:9 -->
+            <div class="collage-item landscape-16-9">
+                <img src="images/IMG_1579.JPG" alt="Portfolio 15">
+            </div>
+
+            <!-- Foto 16 - Hochkant 2:3 -->
+            <div class="collage-item portrait-2-3">
+                <img src="images/IMG_9953.jpg" alt="Portfolio 16">
+            </div>
+
+            <!-- Foto 17 - Hochkant 4:5 -->
+            <div class="collage-item portrait-4-5">
+                <img src="images/IMG_0290.JPG" alt="Portfolio 17">
+            </div>
+
+            <!-- Foto 18 - Querformat 16:9 -->
+            <div class="collage-item landscape-16-9">
+                <img src="images/IMG_0364.JPG" alt="Portfolio 18">
+            </div>
         </div>
     </div>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="container">
-        <h2>Portfolio</h2>
-
-        <div class="filter-buttons">
-            <button class="filter-btn active">Alle</button>
-            <button class="filter-btn">Videografie</button>
-            <button class="filter-btn">Fotografie</button>
-            <button class="filter-btn">Events</button>
-        </div>
-
-        <div class="portfolio-grid">
-            <!-- PROJEKT 1 -->
-            <div class="project-card">
-                <div class="image-carousel">
-                    <div class="carousel-container" id="carousel1">
-                        <div class="carousel-item">
-                            <img src="images/DSC03633.JPG" alt="Projekt 1 Bild 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC03648.JPG" alt="Projekt 1 Bild 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC03155.JPG" alt="Projekt 1 Bild 3">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC03059.JPG" alt="Projekt 4 Bild 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC03136.JPG" alt="Projekt 4 Bild 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/IMG_0364.JPG" alt="Projekt 4 Bild 3">
-                        </div>
-                    </div>
-                    <button class="carousel-nav carousel-prev" onclick="moveCarousel('carousel1', -1)">❮</button>
-                    <button class="carousel-nav carousel-next" onclick="moveCarousel('carousel1', 1)">❯</button>
-                    <div class="carousel-dots">
-                        <button class="carousel-dot active" onclick="goToSlide('carousel1', 0)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel1', 1)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel1', 2)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel1', 3)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel1', 4)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel1', 5)"></button>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <div class="project-type">Fotoproduktion</div>
-                    <div class="project-title">Outdoor & Portrait.</div>
-                    <p class="project-description">Outdoor & Portrait."</p>
-                </div>
-            </div>
-
-            <!-- PROJEKT 2 -->
-            <div class="project-card">
-                <div class="image-carousel">
-                    <div class="carousel-container" id="carousel2">
-                        <div class="carousel-item">
-                            <img src="images/DSC04126.JPG" alt="Projekt 2 Bild 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC04668.JPG" alt="Projekt 2 Bild 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC04852.JPG" alt="Projekt 2 Bild 3">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC04126_2.JPG" alt="Projekt 2 Bild 3">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC04939.JPG" alt="Projekt 2 Bild 3">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC04263.JPG" alt="Projekt 2 Bild 3">
-                        </div>
-                    </div>
-                    <button class="carousel-nav carousel-prev" onclick="moveCarousel('carousel2', -1)">❮</button>
-                    <button class="carousel-nav carousel-next" onclick="moveCarousel('carousel2', 1)">❯</button>
-                    <div class="carousel-dots">
-                        <button class="carousel-dot active" onclick="goToSlide('carousel2', 0)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel2', 1)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel2', 2)"></button>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <div class="project-type">Fotoproduktion</div>
-                    <div class="project-title">Events</div>
-                    <p class="project-description">"Porträtserie Bachata Event"</p>
-                </div>
-            </div>
-
-            <!-- PROJEKT 3 -->
-            <div class="project-card">
-                <div class="image-carousel">
-                    <div class="carousel-container" id="carousel3">
-                        <div class="carousel-item">
-                            <div class="video-placeholder" onclick="playVideo(this, 'images/visual_experience_vn_full_res.mov')">
-                                <img src="images/visual_experience_thumbnail.jpg" alt="Video Thumbnail">
-                                <div class="play-button">▶</div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/IMG_8512.jpg" alt="Projekt 3 Bild 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/IMG_9953.jpg" alt="Projekt 3 Bild 3">
-                        </div>
-                    </div>
-                    <button class="carousel-nav carousel-prev" onclick="moveCarousel('carousel3', -1)">❮</button>
-                    <button class="carousel-nav carousel-next" onclick="moveCarousel('carousel3', 1)">❯</button>
-                    <div class="carousel-dots">
-                        <button class="carousel-dot active" onclick="goToSlide('carousel3', 0)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel3', 1)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel3', 2)"></button>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <div class="project-type">Events</div>
-                    <div class="project-title">Aftermovies</div>
-                    <p class="project-description">Event Coverage: Aftermovie, Highlights, Musikvideo</p>
-                </div>
-            </div>
-
-            <!-- PROJEKT 4 -->
-            <div class="project-card">
-                <div class="image-carousel">
-                    <div class="carousel-container" id="carousel4">
-                        <div class="carousel-item">
-                            <img src="images/DSC03316.JPG" alt="Projekt 4 Bild 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC05823.JPG" alt="Projekt 4 Bild 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC03366.JPG" alt="Projekt 4 Bild 3">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC03553.JPG" alt="Projekt 4 Bild 3">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/DSC03292.JPG" alt="Projekt 4 Bild 3">
-                        </div>
-                    </div>
-                    <button class="carousel-nav carousel-prev" onclick="moveCarousel('carousel4', -1)">❮</button>
-                    <button class="carousel-nav carousel-next" onclick="moveCarousel('carousel4', 1)">❯</button>
-                    <div class="carousel-dots">
-                        <button class="carousel-dot active" onclick="goToSlide('carousel4', 0)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel4', 1)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel4', 2)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel4', 3)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel4', 4)"></button>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <div class="project-type">Fotografie</div>
-                    <div class="project-title">Outdoor</div>
-                    <p class="project-description">Beschreibung: z.B. "Musikvideo / Produktfilm / Commercial"</p>
-                    <a href="https://vimeo.com" class="project-link">Video ansehen →</a>
-                </div>
-            </div>
-
-            <!-- PROJEKT 5 -->
-            <div class="project-card">
-                <div class="image-carousel">
-                    <div class="carousel-container" id="carousel5">
-                        <div class="carousel-item">
-                            <img src="images/IMG_1059.JPG" alt="Projekt 5 Bild 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/IMG_1056.JPG" alt="Projekt 5 Bild 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/IMG_1057.JPG" alt="Projekt 5 Bild 3">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/IMG_0290.JPG" alt="Projekt 5 Bild 3">
-                        </div>
-                    </div>
-                    <button class="carousel-nav carousel-prev" onclick="moveCarousel('carousel5', -1)">❮</button>
-                    <button class="carousel-nav carousel-next" onclick="moveCarousel('carousel5', 1)">❯</button>
-                    <div class="carousel-dots">
-                        <button class="carousel-dot active" onclick="goToSlide('carousel5', 0)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel5', 1)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel5', 2)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel5', 3)"></button>
-
-                    </div>
-                </div>
-                <div class="project-info">
-                    <div class="project-type">Fotografie</div>
-                    <div class="project-title">Vietnam</div>
-                    <p class="project-description">Kreative Ansätze</p>
-                </div>
-            </div>
-
-            <!-- PROJEKT 6 -->
-            <div class="project-card">
-                <div class="image-carousel">
-                    <div class="carousel-container" id="carousel6">
-                        <div class="carousel-item">
-                            <img src="images/IMG_1579.JPG" alt="Projekt 6 Bild 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="images/IMG_1578.JPG" alt="Projekt 6 Bild 2">
-                        </div>
-                    </div>
-                    <button class="carousel-nav carousel-prev" onclick="moveCarousel('carousel6', -1)">❮</button>
-                    <button class="carousel-nav carousel-next" onclick="moveCarousel('carousel6', 1)">❯</button>
-                    <div class="carousel-dots">
-                        <button class="carousel-dot active" onclick="goToSlide('carousel6', 0)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel6', 1)"></button>
-                        <button class="carousel-dot" onclick="goToSlide('carousel6', 2)"></button>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <div class="project-type">Commercial</div>
-                    <div class="project-title">Produktfilm / Commercial</div>
-                    <p class="project-description">Produktfilm / Commercial</p>
-                    <a href="https://vimeo.com" class="project-link">Ansehen →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- About Section -->
     <section id="about" class="container">
-        <h2>Über mich</h2>
+        <div class="section-header">
+            <h2>Über mich</h2>
+        </div>
         <div class="about-content">
             <div class="about-text">
                 <h3>Duyanh Do</h3>
                 <p>
-                    Schreib hier einen kurzen Text über dich: Wer bist du? Was machst du? 
-                    Wie lange arbeitest du schon in diesem Bereich?
+                    Videograph & Fotograf mit Leidenschaft für kreative Bildgestaltung. 
+                    Spezialisiert auf Event-Coverage, Porträtfotografie und Videoproduktion.
                 </p>
                 <p>
-                    Nutze 2-3 Absätze um deine Erfahrung, deine Leidenschaft und deine 
-                    Besonderheiten zu beschreiben. Das hilft Auftraggebern, dich kennenzulernen.
+                    Mit mehreren Jahren Erfahrung in Videoschnitt, Color Grading und 
+                    professioneller Fotografie kreiere ich visuelle Inhalte, die Geschichten erzählen.
                 </p>
 
                 <div class="skills">
@@ -785,29 +553,21 @@
                             <div class="skill-progress" style="width: 92%;"></div>
                         </div>
                     </div>
-
-                    <div class="skill-item">
-                        <div class="skill-label">
-                            <span>Deine weitere Fähigkeit</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%;"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
             <div class="about-image">
-                <img src="mein-portraet.jpg" alt="Dein Porträt">
+                <img src="images/IMG_1059.JPG" alt="Duyanh Do Portrait">
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="container">
-        <h2>Kontakt</h2>
-        <p style="margin-bottom: 2rem; font-size: 1.1rem;">
+        <div class="section-header">
+            <h2>Kontakt</h2>
+        </div>
+        <p style="margin-bottom: 2rem; font-size: 1.1rem; color: white; text-align: center;">
             Lass mich von deinen Projektideen hören!
         </p>
 
@@ -827,14 +587,6 @@
                 <p>Köln, Deutschland</p>
             </div>
         </div>
-
-        <div class="social-links">
-            <a href="https://instagram.com" title="Instagram">IG</a>
-            <a href="https://youtube.com" title="YouTube">YT</a>
-            <a href="https://vimeo.com" title="Vimeo">VM</a>
-            <a href="https://linkedin.com" title="LinkedIn">LI</a>
-            <a href="https://github.com" title="GitHub">GH</a>
-        </div>
     </section>
 
     <!-- Footer -->
@@ -842,73 +594,40 @@
         <p>&copy; 2026 Duyanh Do - Videoproduktion & Fotoproduktion. Alle Rechte vorbehalten.</p>
     </footer>
 
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <video controls autoplay>
+                <source src="" type="video/quicktime">
+                Dein Browser unterstützt dieses Video-Format nicht.
+            </video>
+        </div>
+    </div>
+
     <script>
-        // Carousel Navigation
-        function moveCarousel(carouselId, direction) {
-            const container = document.getElementById(carouselId);
-            const items = container.querySelectorAll('.carousel-item');
-            const currentTransform = container.style.transform || 'translateX(0)';
-            const match = currentTransform.match(/-?\d+/);
-            let currentTranslate = match ? parseInt(match[0]) : 0;
-            
-            const itemIndex = Math.round(-currentTranslate / 100);
-            let newIndex = itemIndex + direction;
-            
-            if (newIndex < 0) newIndex = items.length - 1;
-            if (newIndex >= items.length) newIndex = 0;
-            
-            container.style.transform = `translateX(-${newIndex * 100}%)`;
-            updateDots(carouselId, newIndex);
+        function openModal(videoElement) {
+            const modal = document.getElementById('videoModal');
+            const videoSource = videoElement.querySelector('source').src;
+            const modalVideo = modal.querySelector('video source');
+            modalVideo.src = videoSource;
+            modal.classList.add('active');
         }
 
-        function goToSlide(carouselId, index) {
-            const container = document.getElementById(carouselId);
-            container.style.transform = `translateX(-${index * 100}%)`;
-            updateDots(carouselId, index);
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            modal.classList.remove('active');
+            const modalVideo = modal.querySelector('video');
+            modalVideo.pause();
         }
 
-        function updateDots(carouselId, activeIndex) {
-            const carousel = document.getElementById(carouselId).closest('.image-carousel');
-            const dots = carousel.querySelectorAll('.carousel-dot');
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === activeIndex);
-            });
+        // Schließe Modal bei Klick außerhalb
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeModal();
+            }
         }
-
-        // Filter-Funktionalität
-        document.querySelectorAll('.filter-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        function playVideo(element, videoUrl) {
-            const isMp4 = videoUrl.includes('.mov') || videoUrl.includes('.mp4');
-            
-            const modal = document.createElement('div');
-            modal.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:1000;';
-            
-            const closeBtn = document.createElement('button');
-            closeBtn.innerHTML = '✕';
-            closeBtn.style.cssText = 'position:absolute;top:20px;right:20px;width:50px;height:50px;background:white;border:none;border-radius:50%;font-size:24px;cursor:pointer;z-index:1001;';
-            closeBtn.onclick = () => modal.remove();
-
-            const videoContainer = document.createElement('div');
-            videoContainer.style.cssText = 'width:90%;max-width:900px;aspect-ratio:16/9;';
-            
-            const video = document.createElement('video');
-            video.src = videoUrl;
-            video.style.cssText = 'width:100%;height:100%;object-fit:contain;';
-            video.controls = true;
-            video.autoplay = true;
-            videoContainer.appendChild(video);
-
-            modal.appendChild(closeBtn);
-            modal.appendChild(videoContainer);
-            document.body.appendChild(modal);
-}
-
     </script>
 </body>
 </html>
