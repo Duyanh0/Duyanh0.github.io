@@ -447,10 +447,10 @@
             </div>
 
             <!-- Video 16:9 mit Play-Button -->
-            <div class="collage-item landscape-16-9 video-item">
-                <video onclick="openModal(this)">
-                    <source src="images/visual_experience_vn_full_res.mov" type="video/quicktime">
-                </video>
+            <div class="collage-item landscape-16-9 video-item" 
+            onclick="openYoutubeModal('Ua7brgM9vTo')">
+                <img src="https://img.youtube.com/vi/Ua7brgM9vTo/maxresdefault.jpg" 
+                    style="width:100%; height:100%; object-fit: cover;" alt="Video">
                 <div class="play-overlay">▶</div>
             </div>
 
@@ -606,28 +606,57 @@
     </div>
 
     <script>
-        function openModal(videoElement) {
-            const modal = document.getElementById('videoModal');
-            const videoSource = videoElement.querySelector('source').src;
-            const modalVideo = modal.querySelector('video source');
-            modalVideo.src = videoSource;
-            modal.classList.add('active');
-        }
+    function openYoutubeModal(videoId) {
+        const modal = document.getElementById('videoModal');
+        const modalContent = modal.querySelector('.modal-content');
+        
+        modalContent.innerHTML = `
+            <iframe 
+                src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
+                style="width:100%; height:100%; border:none;" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                allowfullscreen>
+            </iframe>
+        `;
+        modal.classList.add('active');
+    }
 
-        function closeModal() {
-            const modal = document.getElementById('videoModal');
-            modal.classList.remove('active');
-            const modalVideo = modal.querySelector('video');
-            modalVideo.pause();
-        }
+    // Falls du auch lokale Videos öffnen willst
+    function openLocalVideoModal(videoSrc) {
+        const modal = document.getElementById('videoModal');
+        const modalContent = modal.querySelector('.modal-content');
+        
+        modalContent.innerHTML = `
+            <video controls autoplay style="width:100%; height:100%;">
+                <source src="${videoSrc}" type="video/mp4">
+                Dein Browser unterstützt dieses Video nicht.
+            </video>
+        `;
+        modal.classList.add('active');
+    }
 
-        // Schließe Modal bei Klick außerhalb
-        window.onclick = function(event) {
-            const modal = document.getElementById('videoModal');
-            if (event.target == modal) {
-                closeModal();
-            }
+    function closeModal() {
+        const modal = document.getElementById('videoModal');
+        const modalContent = modal.querySelector('.modal-content');
+        
+        modal.classList.remove('active');
+        modalContent.innerHTML = ''; // Stoppt Video/Iframe sofort
+    }
+
+    // Schließe Modal bei Klick auf den grauen Hintergrund
+    window.onclick = function(event) {
+        const modal = document.getElementById('videoModal');
+        if (event.target == modal) {
+            closeModal();
         }
-    </script>
+    }
+    
+    // Optional: Schließen mit der ESC-Taste
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape") {
+            closeModal();
+        }
+    });
+</script>
 </body>
 </html>
