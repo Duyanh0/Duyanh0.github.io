@@ -257,7 +257,7 @@
         }
 
         #contact h2 {
-            color: white;
+            color: rgb(61, 61, 61);
         }
 
         .contact-info {
@@ -296,7 +296,7 @@
         /* Footer */
         footer {
             background: #0d0d0d;
-            color: #999;
+            color: #acacac;
             text-align: center;
             padding: 2rem;
             font-size: 0.9rem;
@@ -396,7 +396,7 @@
             <div class="logo">Duyanh Do</div>
             <ul class="nav-links">
                 <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#about">Über mich</a></li>
+                <!-- <li><a href="#about">Über mich</a></li> -->
                 <li><a href="#contact">Kontakt</a></li>
             </ul>
         </div>
@@ -423,17 +423,22 @@
 
             <!-- Foto 3 - Hochkant 2:3 -->
             <div class="collage-item portrait-2-3">
-                <img src="images/DSC03155.JPG" alt="Portfolio 3">
+                <img src="images/DSC03155.JPG" 
+                    alt="Portfolio 3"
+                    style="object-fit: cover; object-position: 50% 75%; transform: scale(1);"> /* 50% horizontal, 30% vertikal */
             </div>
 
             <!-- Foto 4 - Hochkant 4:5 -->
             <div class="collage-item portrait-4-5">
-                <img src="images/DSC03059.JPG" alt="Portfolio 4">
+                <img src="images/DSC03059.JPG" 
+                    alt="Portfolio 4" 
+                    style="object-fit: cover; object-position: 50% 65%; transform: scale(1);"> /* 50% horizontal, 30% vertikal */
             </div>
 
             <!-- Foto 5 - Querformat 16:9 -->
             <div class="collage-item landscape-16-9">
-                <img src="images/IMG_1059.JPG" alt="Portfolio 5">
+                <img src="images/IMG_1059.JPG" alt="Portfolio 5"
+                style="object-fit: cover; object-position: 50% 55%; transform: scale(1.0);"> /* 50% horizontal, 30% vertikal */
             </div>
 
             <!-- Foto 6 - Hochkant 2:3 -->
@@ -448,7 +453,8 @@
 
             <!-- Foto 8 - Hochkant 2:3 -->
             <div class="collage-item portrait-2-3">
-                <img src="images/DSC04852.JPG" alt="Portfolio 8">
+                <img src="images/IMG_8512.jpg" alt="Portfolio 8"
+                style="object-fit: cover; object-position: 45% 55%; transform: scale(1.0);"> /* 50% horizontal, 30% vertikal */>
             </div>
 
             <!-- Video 16:9 mit Play-Button -->
@@ -466,12 +472,13 @@
 
             <!-- Foto 10 - Hochkant 2:3 -->
             <div class="collage-item portrait-2-3">
-                <img src="images/DSC05823.jpg" alt="Portfolio 10">
+                <img src="images/IMG_1056.JPG" alt="Portfolio 10">
             </div>
 
             <!-- Foto 11 - Hochkant 4:5 -->
             <div class="collage-item portrait-4-5">
-                <img src="images/IMG_8512.jpg" alt="Portfolio 11">
+                <img src="images/DSC03553.JPG" alt="Portfolio 11"
+                style="object-fit: cover; object-position: 45% 45%; transform: scale(1.0);"> /* 50% horizontal, 30% vertikal */>
             </div>
 
             <!-- Foto 12 - Querformat 16:9 -->
@@ -481,27 +488,31 @@
 
             <!-- Foto 13 - Hochkant 2:3 -->
             <div class="collage-item portrait-2-3">
-                <img src="images/IMG_1056.JPG" alt="Portfolio 13">
+                <img src="images/DSC04852.JPG" alt="Portfolio 13">
             </div>
 
             <!-- Foto 14 - Hochkant 4:5 -->
             <div class="collage-item portrait-4-5">
-                <img src="images/DSC03553.JPG" alt="Portfolio 14">
+                <img src="images/IMG_1057.JPG" alt="Portfolio 17"
+                style="object-fit: cover; object-position: 45% 60%; transform: scale(1.0);"> /* 50% horizontal, 30% vertikal */>
             </div>
 
             <!-- Foto 15 - Querformat 16:9 -->
             <div class="collage-item landscape-16-9">
-                <img src="images/IMG_1579.JPG" alt="Portfolio 15">
+                <img src="images/IMG_1579.JPG" alt="Portfolio 15"
+                style="object-fit: cover; object-position: 45% 55%; transform: scale(1.0);"> /* 50% horizontal, 30% vertikal */>>
             </div>
 
             <!-- Foto 16 - Hochkant 2:3 -->
             <div class="collage-item portrait-2-3">
-                <img src="images/IMG_9953.jpg" alt="Portfolio 16">
+                <img src="images/IMG_9953.jpg" alt="Portfolio 16"
+                style="object-fit: cover; object-position: 50% 55%; transform: scale(1.0);"> /* 50% horizontal, 30% vertikal */>
             </div>
 
             <!-- Foto 17 - Hochkant 4:5 -->
             <div class="collage-item portrait-4-5">
-                <img src="images/IMG_0290.JPG" alt="Portfolio 17">
+                <img src="images/IMG_8512.jpg" alt="Portfolio 8"
+                style="object-fit: cover; object-position: 45% 55%; transform: scale(1.0);"> /* 50% horizontal, 30% vertikal */>
             </div>
 
             <!-- Foto 18 - Querformat 16:9 -->
@@ -511,7 +522,7 @@
         </div>
     </div>
 
-    <!-- About Section -->
+    <!-- About Section
     <section id="about" class="container">
         <div class="section-header">
             <h2>Über mich</h2>
@@ -565,7 +576,7 @@
                 <img src="images/IMG_1059.JPG" alt="Duyanh Do Portrait">
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Contact Section -->
     <section id="contact" class="container">
@@ -573,7 +584,7 @@
             <h2>Kontakt</h2>
         </div>
         <p style="margin-bottom: 2rem; font-size: 1.1rem; color: white; text-align: center;">
-            Lass mich von deinen Projektideen hören!
+            Creative Work.
         </p>
 
         <div class="contact-info">
